@@ -1,0 +1,10 @@
+../Core/Src/main.c:60:5:__io_putchar	1
+../Core/Src/main.c:66:6:Standby	2
+../Core/Src/main.c:71:6:ProgramStart	1
+../Core/Src/main.c:79:6:cls	1
+../Core/Src/main.c:83:6:Cursor	1
+../Core/Src/main.c:96:5:main	1
+../Core/Src/main.c:145:6:SystemClock_Config	3
+../Core/Src/main.c:192:13:MX_USART2_UART_Init	2
+../Core/Src/main.c:225:13:MX_GPIO_Init	1
+../Core/Src/main.c:265:6:Error_Handler	1
