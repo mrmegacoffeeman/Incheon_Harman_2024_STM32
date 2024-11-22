@@ -1,0 +1,24 @@
+
+//Function : 1602 LCK devicd control
+
+
+extern I2C_HandleTypeDef *hi2c;
+
+#define I2C_ADDR 0x4E	//0x27 << 1
+
+void lcd_command(char c)	// cmd_bit : abcd efgh
+{
+
+
+}
+void lcd_data(char ch)
+{
+
+}
+void lcd_init()
+{
+	lcd_command(0x01); // screen clear
+	lcd_command(0x02); // cursor home
+	lcd_command(0x06);
+	lcd_command(0x0f);
+}

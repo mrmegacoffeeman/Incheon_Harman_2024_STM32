@@ -1,60 +1,19 @@
-16:51:01 **** Incremental Build of configuration Debug for project Test003 ****
+16:45:38 **** Incremental Build of configuration Debug for project Test003 ****
 make -j24 all 
-arm-none-eabi-gcc "../Core/Src/myLib.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/myLib.d" -MT"Core/Src/myLib.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/myLib.o"
-../Core/Src/myLib.c: In function '__io_putchar':
-../Core/Src/myLib.c:8:28: error: 'huart2' undeclared (first use in this function); did you mean 'Huart2'?
-    8 |         HAL_UART_Transmit(&huart2, &ch, 1, 10);
-      |                            ^~~~~~
-      |                            Huart2
-../Core/Src/myLib.c:8:28: note: each undeclared identifier is reported only once for each function it appears in
-../Core/Src/myLib.c:8:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
-    8 |         HAL_UART_Transmit(&huart2, &ch, 1, 10);
-      |                                    ^~~
-      |                                    |
-      |                                    int *
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/myLib.c:2:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'int *'
-  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/myLib.c: In function 'ProgramStart':
-../Core/Src/myLib.c:20:9: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
-   20 |         printf("\033[2J\033[0;0H");
-      |         ^~~~~~
-../Core/Src/myLib.c:3:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-    2 | #include "main.h"
-  +++ |+#include <stdio.h>
-    3 | 
-../Core/Src/myLib.c:20:9: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
-   20 |         printf("\033[2J\033[0;0H");
-      |         ^~~~~~
-../Core/Src/myLib.c:20:9: note: include '<stdio.h>' or provide a declaration of 'printf'
-../Core/Src/myLib.c:21:33: warning: format '%s' expects argument of type 'char *', but argument 2 has type 'int' [-Wformat=]
-   21 |         printf("Program Name - %s\r\n", *str);
-      |                                ~^       ~~~~
-      |                                 |       |
-      |                                 char *  int
-      |                                %d
-../Core/Src/myLib.c: In function 'cls':
-../Core/Src/myLib.c:29:9: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
-   29 |         printf("\033[2J");
-      |         ^~~~~~
-../Core/Src/myLib.c:29:9: note: include '<stdio.h>' or provide a declaration of 'printf'
-../Core/Src/myLib.c: In function 'Cursor':
-../Core/Src/myLib.c:34:9: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
-   34 |         sprintf(buf, "\033[%d;%dH", y, x);
-      |         ^~~~~~~
-../Core/Src/myLib.c:34:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-../Core/Src/myLib.c:34:9: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
-../Core/Src/myLib.c:34:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-../Core/Src/myLib.c:35:9: warning: implicit declaration of function 'puts' [-Wimplicit-function-declaration]
-   35 |         puts(buf);
-      |         ^~~~
-../Core/Src/myLib.c:35:9: note: include '<stdio.h>' or provide a declaration of 'puts'
-make: *** [Core/Src/subdir.mk:37: Core/Src/myLib.o] Error 1
+arm-none-eabi-gcc -o "Test003.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test03\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/myLib.o: in function `__io_putchar':
+C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/myLib.c:7: multiple definition of `__io_putchar'; ./Core/Src/main.o:C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/main.c:61: first defined here
+C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/myLib.o: in function `Standby':
+C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/myLib.c:13: multiple definition of `Standby'; ./Core/Src/main.o:C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/main.c:67: first defined here
+C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/myLib.o: in function `ProgramStart':
+C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/myLib.c:18: multiple definition of `ProgramStart'; ./Core/Src/main.o:C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/main.c:72: first defined here
+C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/myLib.o: in function `cls':
+C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/myLib.c:30: multiple definition of `cls'; ./Core/Src/main.o:C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/main.c:80: first defined here
+C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/myLib.o: in function `Cursor':
+C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/myLib.c:34: multiple definition of `Cursor'; ./Core/Src/main.o:C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/main.c:84: first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:64: Test003.elf] Error 1
 "make -j24 all" terminated with exit code 2. Build might be incomplete.
 
-16:51:01 Build Failed. 2 errors, 8 warnings. (took 281ms)
+16:45:38 Build Failed. 6 errors, 0 warnings. (took 330ms)
 

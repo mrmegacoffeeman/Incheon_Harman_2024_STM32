@@ -1,0 +1,16 @@
+16:49:09 **** Incremental Build of configuration Debug for project Mission CLCD-Joystick ****
+make -j24 all 
+arm-none-eabi-gcc -o "Mission CLCD-Joystick.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Mission CLCD-Joystick\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Mission CLCD-Joystick.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Mission CLCD-Joystick.elf
+ 
+arm-none-eabi-size  Mission\ CLCD-Joystick.elf 
+arm-none-eabi-objdump -h -S Mission\ CLCD-Joystick.elf  > "Mission CLCD-Joystick.list"
+   text	   data	    bss	    dec	    hex	filename
+  34404	    476	   2308	  37188	   9144	Mission CLCD-Joystick.elf
+Finished building: default.size.stdout
+ 
+Finished building: Mission CLCD-Joystick.list
+ 
+
+16:49:10 Build Finished. 0 errors, 0 warnings. (took 483ms)
+
