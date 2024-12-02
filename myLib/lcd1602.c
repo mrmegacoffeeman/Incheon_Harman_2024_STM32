@@ -1,5 +1,6 @@
 //Function : 1602 LCK devicd control
 #include "main.h"
+#include "stm32f4xx_hal_i2c.h"
 
 //extern I2C_HandleTypeDef *hi2c;
 
@@ -75,6 +76,23 @@ void lcd_printEx(char *str, int ln)
 {
 	if(ln == 0) lcd_command (0x80);		//1000 0000
 	if(ln == 1) lcd_command (0xc0);		//1100 0000
+	lcd_print(str);
+}
+
+int ln2 = 0;	// current line no.
+char sBuf[20];  // 2nd line string.
+void lcd_printEx2(char *str)
+{
+	if(ln2 == 0)
+		{
+		lcd_command (0x80); ln2++;		//1000 0000
+		}
+	else if(ln2 == 1)
+			{
+		lcd_command (0x80); lcd_print(sBuf);
+		lcd_command (0xc0);
+		strcpy(sBuf, str);//1100 0000
+			}
 	lcd_print(str);
 }
 

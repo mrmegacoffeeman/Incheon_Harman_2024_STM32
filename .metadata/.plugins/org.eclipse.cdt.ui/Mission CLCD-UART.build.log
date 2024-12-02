@@ -1,0 +1,10 @@
+16:45:37 **** Incremental Build of configuration Debug for project Mission CLCD-UART ****
+make -j24 all 
+arm-none-eabi-size  Mission\ CLCD-UART.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21796	    112	   2088	  23996	   5dbc	Mission CLCD-UART.elf
+Finished building: default.size.stdout
+ 
+
+16:45:37 Build Finished. 0 errors, 0 warnings. (took 284ms)
+

@@ -1,19 +1,7 @@
 16:45:38 **** Incremental Build of configuration Debug for project Test003 ****
 make -j24 all 
-arm-none-eabi-gcc -o "Test003.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test03\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/myLib.o: in function `__io_putchar':
-C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/myLib.c:7: multiple definition of `__io_putchar'; ./Core/Src/main.o:C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/main.c:61: first defined here
-C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/myLib.o: in function `Standby':
-C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/myLib.c:13: multiple definition of `Standby'; ./Core/Src/main.o:C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/main.c:67: first defined here
-C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/myLib.o: in function `ProgramStart':
-C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/myLib.c:18: multiple definition of `ProgramStart'; ./Core/Src/main.o:C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/main.c:72: first defined here
-C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/myLib.o: in function `cls':
-C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/myLib.c:30: multiple definition of `cls'; ./Core/Src/main.o:C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/main.c:80: first defined here
-C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/myLib.o: in function `Cursor':
-C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/myLib.c:34: multiple definition of `Cursor'; ./Core/Src/main.o:C:/Users/user/source/repos/STM32/Test03/Debug/../Core/Src/main.c:84: first defined here
-collect2.exe: error: ld returned 1 exit status
-make: *** [makefile:64: Test003.elf] Error 1
+make: *** No rule to make target '../Core/Src/myLib.c', needed by 'Core/Src/myLib.o'.  Stop.
 "make -j24 all" terminated with exit code 2. Build might be incomplete.
 
-16:45:38 Build Failed. 6 errors, 0 warnings. (took 330ms)
+16:45:38 Build Failed. 1 errors, 0 warnings. (took 238ms)
 

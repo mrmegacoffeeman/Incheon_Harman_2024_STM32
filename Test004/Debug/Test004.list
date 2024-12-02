@@ -1032,9 +1032,9 @@ __STATIC_FORCEINLINE void __disable_irq(void)
 	...
 
 08000904 <__io_putchar>:
-#include "main.h"
-
 extern UART_HandleTypeDef huart2;
+//I2C_HandleTypeDef *hi2c = NULL;
+
 
 int __io_putchar(int ch)  //4byte
 {

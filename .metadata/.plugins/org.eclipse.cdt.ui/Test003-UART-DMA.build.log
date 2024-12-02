@@ -1,0 +1,10 @@
+16:45:42 **** Incremental Build of configuration Debug for project Test003-UART-DMA ****
+make -j24 all 
+arm-none-eabi-size  Test003-UART-DMA.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18136	    112	   2184	  20432	   4fd0	Test003-UART-DMA.elf
+Finished building: default.size.stdout
+ 
+
+16:45:42 Build Finished. 0 errors, 0 warnings. (took 233ms)
+
