@@ -1,0 +1,36 @@
+17:45:32 **** Incremental Build of configuration Debug for project Test006-uSonic-PWM ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:65:13: warning: data definition has no type or storage class
+   65 | int t1 = 0; t2 = 0;
+      |             ^~
+../Core/Src/main.c:65:13: warning: type defaults to 'int' in declaration of 't2' [-Wimplicit-int]
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:120:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+  120 |   ProgramStart("uSonic - PWM : Start");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:132:11: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  132 |           printf("Distance = %f\r\n" , dist);
+      |           ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:132:11: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  132 |           printf("Distance = %f\r\n" , dist);
+      |           ^~~~~~
+../Core/Src/main.c:132:11: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "Test006-uSonic-PWM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test006-uSonic-PWM\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test006-uSonic-PWM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test006-uSonic-PWM.elf
+ 
+arm-none-eabi-size  Test006-uSonic-PWM.elf 
+arm-none-eabi-objdump -h -S Test006-uSonic-PWM.elf  > "Test006-uSonic-PWM.list"
+   text	   data	    bss	    dec	    hex	filename
+  36872	    476	   2136	  39484	   9a3c	Test006-uSonic-PWM.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test006-uSonic-PWM.list
+ 
+
+17:45:32 Build Finished. 0 errors, 5 warnings. (took 584ms)
+

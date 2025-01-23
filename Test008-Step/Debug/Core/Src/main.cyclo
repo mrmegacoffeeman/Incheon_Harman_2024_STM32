@@ -1,0 +1,6 @@
+../Core/Src/main.c:59:6:step_wave	9
+../Core/Src/main.c:125:5:main	2
+../Core/Src/main.c:184:6:SystemClock_Config	3
+../Core/Src/main.c:231:13:MX_USART2_UART_Init	2
+../Core/Src/main.c:264:13:MX_GPIO_Init	1
+../Core/Src/main.c:314:6:Error_Handler	1

@@ -1,0 +1,36 @@
+16:36:29 **** Build of configuration Debug for project Test006-uSonic-ITR ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I"C:/Users/user/source/repos/STM32/myLib" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:86:9: warning: implicit declaration of function 'Trigger' [-Wimplicit-function-declaration]
+   86 |         Trigger();
+      |         ^~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:123:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+  123 |   ProgramStart ("uSonic Test - GPIO Interrupt");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:133:11: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  133 |           printf("Distance = %f\r\n" , dist);
+      |           ^~~~~~
+../Core/Src/main.c:25:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   24 | #include "uSonicc.h"
+  +++ |+#include <stdio.h>
+   25 | double Distance ();
+../Core/Src/main.c:133:11: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  133 |           printf("Distance = %f\r\n" , dist);
+      |           ^~~~~~
+../Core/Src/main.c:133:11: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "Test006-uSonic-ITR.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test006-uSonic-ITR\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test006-uSonic-ITR.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test006-uSonic-ITR.elf
+ 
+arm-none-eabi-size  Test006-uSonic-ITR.elf 
+arm-none-eabi-objdump -h -S Test006-uSonic-ITR.elf  > "Test006-uSonic-ITR.list"
+   text	   data	    bss	    dec	    hex	filename
+  35592	    476	   2144	  38212	   9544	Test006-uSonic-ITR.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test006-uSonic-ITR.list
+ 
+
+16:36:30 Build Finished. 0 errors, 4 warnings. (took 636ms)
+

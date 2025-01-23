@@ -1,0 +1,10 @@
+14:29:42 **** Incremental Build of configuration Debug for project Mission Servo_uSonic_door ****
+make -j24 all 
+arm-none-eabi-size  Mission\ Servo_uSonic_door.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37880	    476	   2216	  40572	   9e7c	Mission Servo_uSonic_door.elf
+Finished building: default.size.stdout
+ 
+
+14:29:43 Build Finished. 0 errors, 0 warnings. (took 233ms)
+

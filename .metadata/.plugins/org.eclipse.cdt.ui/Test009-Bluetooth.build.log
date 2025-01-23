@@ -1,0 +1,189 @@
+16:44:20 **** Incremental Build of configuration Debug for project Test009-Bluetooth ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:74:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   74 |                 HAL_UART_Transmit(&huart2, &dum1, 1, 10);
+      |                                            ^~~~~
+      |                                            |
+      |                                            char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c:78:25: warning: implicit declaration of function 'CheckCMD' [-Wimplicit-function-declaration]
+   78 |                         CheckCMD(buf1); //read the command in the buf1
+      |                         ^~~~~~~~
+../Core/Src/main.c:82:42: warning: pointer targets in passing argument 2 of 'HAL_UART_Receive_IT' differ in signedness [-Wpointer-sign]
+   82 |             HAL_UART_Receive_IT(&huart1, &dum1, 1);
+      |                                          ^~~~~
+      |                                          |
+      |                                          char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:748:75: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  748 | HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                  ~~~~~~~~~^~~~~
+../Core/Src/main.c:88:45: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   88 |                 HAL_UART_Transmit (&huart2, &dum2, 1, 10);              // Terminal Echo
+      |                                             ^~~~~
+      |                                             |
+      |                                             char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c:93:53: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   93 |                         HAL_UART_Transmit (&huart2, "\n", 1, 10);   // Terminal Echo
+      |                                                     ^~~~
+      |                                                     |
+      |                                                     char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c:96:53: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   96 |                         HAL_UART_Transmit (&huart1, buf2, t2, 10);  // AT Command
+      |                                                     ^~~~
+      |                                                     |
+      |                                                     char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c:100:46: warning: pointer targets in passing argument 2 of 'HAL_UART_Receive_IT' differ in signedness [-Wpointer-sign]
+  100 |                 HAL_UART_Receive_IT(&huart2, &dum2, 1);
+      |                                              ^~~~~
+      |                                              |
+      |                                              char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:748:75: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  748 | HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                  ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'ToUpper':
+../Core/Src/main.c:108:17: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  108 |                 if(*s >= 'a' && *s <= 'z') *s &= 0xDF; s++;
+      |                 ^~
+../Core/Src/main.c:108:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  108 |                 if(*s >= 'a' && *s <= 'z') *s &= 0xDF; s++;
+      |                                                        ^
+../Core/Src/main.c: In function 'ToLower':
+../Core/Src/main.c:115:17: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  115 |                 if(*s >= 'A' && *s <= 'Z') *s |= 0x20; s++;
+      |                 ^~
+../Core/Src/main.c:115:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  115 |                 if(*s >= 'A' && *s <= 'Z') *s |= 0x20; s++;
+      |                                                        ^
+../Core/Src/main.c: In function 'TrimEx':
+../Core/Src/main.c:122:20: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  122 |         int h=0, t=strlen(s)-1;
+      |                    ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:122:20: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  122 |         int h=0, t=strlen(s)-1;
+      |                    ^~~~~~
+../Core/Src/main.c:122:20: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:133:9: warning: implicit declaration of function 'strncpy' [-Wimplicit-function-declaration]
+  133 |         strncpy(dest, s+h, t-h+1);
+      |         ^~~~~~~
+../Core/Src/main.c:133:9: note: include '<string.h>' or provide a declaration of 'strncpy'
+../Core/Src/main.c:133:9: warning: incompatible implicit declaration of built-in function 'strncpy' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:133:9: note: include '<string.h>' or provide a declaration of 'strncpy'
+../Core/Src/main.c: In function 'Trim':
+../Core/Src/main.c:139:20: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  139 |         int h=0, t=strlen(s)-1;
+      |                    ^~~~~~
+../Core/Src/main.c:139:20: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:143:30: warning: implicit declaration of function 'malloc' [-Wimplicit-function-declaration]
+  143 |         char *dest = (char *)malloc(t-h+1);
+      |                              ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdlib.h>' or provide a declaration of 'malloc'
+   20 | #include "main.h"
+  +++ |+#include <stdlib.h>
+   21 | 
+../Core/Src/main.c:143:30: warning: incompatible implicit declaration of built-in function 'malloc' [-Wbuiltin-declaration-mismatch]
+  143 |         char *dest = (char *)malloc(t-h+1);
+      |                              ^~~~~~
+../Core/Src/main.c:143:30: note: include '<stdlib.h>' or provide a declaration of 'malloc'
+../Core/Src/main.c:144:9: warning: incompatible implicit declaration of built-in function 'strncpy' [-Wbuiltin-declaration-mismatch]
+  144 |         strncpy(dest, s+h, t-h+1);
+      |         ^~~~~~~
+../Core/Src/main.c:144:9: note: include '<string.h>' or provide a declaration of 'strncpy'
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:151:6: warning: conflicting types for 'CheckCMD'; have 'void(char *)'
+  151 | void CheckCMD (char *bb) // ex) str : = "   LED   1"  ==> str = "LED 1"
+      |      ^~~~~~~~
+../Core/Src/main.c:78:25: note: previous implicit declaration of 'CheckCMD' with type 'void(char *)'
+   78 |                         CheckCMD(buf1); //read the command in the buf1
+      |                         ^~~~~~~~
+../Core/Src/main.c: In function 'CheckCMD':
+../Core/Src/main.c:156:12: warning: implicit declaration of function 'strncmp' [-Wimplicit-function-declaration]
+  156 |         if(strncmp(str,"LED", 3) == 0)
+      |            ^~~~~~~
+../Core/Src/main.c:156:12: note: include '<string.h>' or provide a declaration of 'strncmp'
+../Core/Src/main.c:156:31: warning: 'strncmp' argument 3 type is 'int' where 'unsigned int' is expected in a call to built-in function declared without prototype [-Wbuiltin-declaration-mismatch]
+  156 |         if(strncmp(str,"LED", 3) == 0)
+      |                               ^
+<built-in>: note: built-in 'strncmp' declared here
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:204:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+  204 |   ProgramStart("Bluetooth");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:207:32: warning: pointer targets in passing argument 2 of 'HAL_UART_Receive_IT' differ in signedness [-Wpointer-sign]
+  207 |   HAL_UART_Receive_IT(&huart1, &dum1, 1);
+      |                                ^~~~~
+      |                                |
+      |                                char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:748:75: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  748 | HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                  ~~~~~~~~~^~~~~
+../Core/Src/main.c:208:32: warning: pointer targets in passing argument 2 of 'HAL_UART_Receive_IT' differ in signedness [-Wpointer-sign]
+  208 |   HAL_UART_Receive_IT(&huart2, &dum2, 1);
+      |                                ^~~~~
+      |                                |
+      |                                char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:748:75: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  748 | HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                  ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Test009-Bluetooth.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test009-Bluetooth\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test009-Bluetooth.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test009-Bluetooth.elf
+ 
+arm-none-eabi-size  Test009-Bluetooth.elf 
+arm-none-eabi-objdump -h -S Test009-Bluetooth.elf  > "Test009-Bluetooth.list"
+   text	   data	    bss	    dec	    hex	filename
+  20096	    112	   2456	  22664	   5888	Test009-Bluetooth.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test009-Bluetooth.list
+ 
+
+16:44:21 Build Finished. 0 errors, 23 warnings. (took 647ms)
+

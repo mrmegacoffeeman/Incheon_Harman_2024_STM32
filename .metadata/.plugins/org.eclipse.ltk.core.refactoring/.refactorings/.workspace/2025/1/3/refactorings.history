@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Test006-uSonic-ITR/Core/Src/uSonic.h&apos;" deleteContents="false" description="Delete resource &apos;Test006-uSonic-ITR/Core/Src/uSonic.h&apos;" element1="/Test006-uSonic-ITR/Core/Src/uSonic.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1736992683215"/>
+</session>

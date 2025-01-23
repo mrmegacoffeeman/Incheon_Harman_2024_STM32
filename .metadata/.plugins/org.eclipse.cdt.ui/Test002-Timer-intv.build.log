@@ -1,0 +1,35 @@
+15:12:30 **** Incremental Build of configuration Debug for project Test002-Timer-intv ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:115:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+  115 |   ProgramStart("Timer - Clock");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:123:11: warning: implicit declaration of function 'Cursor' [-Wimplicit-function-declaration]
+  123 |           Cursor(30,10);
+      |           ^~~~~~
+../Core/Src/main.c:124:11: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  124 |           printf("%02d:%02d:%02d", h,m,s);
+      |           ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:124:11: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  124 |           printf("%02d:%02d:%02d", h,m,s);
+      |           ^~~~~~
+../Core/Src/main.c:124:11: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "Test002-Timer-intv.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test002-Timer-intv\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test002-Timer-intv.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test002-Timer-intv.elf
+ 
+arm-none-eabi-size  Test002-Timer-intv.elf 
+arm-none-eabi-objdump -h -S Test002-Timer-intv.elf  > "Test002-Timer-intv.list"
+   text	   data	    bss	    dec	    hex	filename
+  17376	    112	   2064	  19552	   4c60	Test002-Timer-intv.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test002-Timer-intv.list
+ 
+
+15:12:31 Build Finished. 0 errors, 4 warnings. (took 636ms)
+
