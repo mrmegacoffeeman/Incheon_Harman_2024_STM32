@@ -134,7 +134,7 @@ void TrimEx(char *dest, char *s)		// s = "_____x x x__   \t\r\n" ==> "x x x" , d
 }
 
 
-char * Trim(char *s)		// s = "_____x x x__   \t\r\n" ==> "x x x" , dest : destination
+char * Trim(char *s)		// s = "_____x x x__    \t\r\n" ==> "x x x" , dest : destination
 {
 	int h=0, t=strlen(s)-1;
 	while(*(s+h)==' '||*(s+h)=='\t'||*(s+h)=='\r'||*(s+h)=='\n') h++;	//head index
