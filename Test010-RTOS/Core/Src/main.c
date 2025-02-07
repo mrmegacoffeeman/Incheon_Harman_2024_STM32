@@ -22,6 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+double Distance ();
 
 /* USER CODE END Includes */
 
@@ -41,10 +42,15 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+TIM_HandleTypeDef htim2;
+
 UART_HandleTypeDef huart2;
 
 osThreadId myTask01Handle;
 osThreadId myTask02Handle;
+osThreadId myTask03Handle;
+osThreadId myTask04Handle;
+osSemaphoreId myBinarySem01Handle;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -53,8 +59,11 @@ osThreadId myTask02Handle;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_TIM2_Init(void);
 void myStartTask01(void const * argument);
 void myStartTask02(void const * argument);
+void StartTask03(void const * argument);
+void StartTask04(void const * argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -65,8 +74,9 @@ void myStartTask02(void const * argument);
 int bn = 0, mode = 0, t1 = 0; //mode : 1 button pressed,  0 release
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	mode = 1; t1 = 0;
-	bn++;
+	osSemaphoreRelease(myBinarySem01Handle);
+	//mode = 1; t1 = 0;
+	//bn++;
 }
 void LD2Test()
 {
@@ -114,6 +124,7 @@ void step_wave(int step)
 	}
 
 
+
 /* USER CODE END 0 */
 
 /**
@@ -145,6 +156,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -152,6 +164,11 @@ int main(void)
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
+
+  /* Create the semaphores(s) */
+  /* definition and creation of myBinarySem01 */
+  osSemaphoreDef(myBinarySem01);
+  myBinarySem01Handle = osSemaphoreCreate(osSemaphore(myBinarySem01), 1);
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
@@ -171,12 +188,26 @@ int main(void)
   myTask01Handle = osThreadCreate(osThread(myTask01), NULL);
 
   /* definition and creation of myTask02 */
-  osThreadDef(myTask02, myStartTask02, osPriorityIdle, 0, 128);
+  osThreadDef(myTask02, myStartTask02, osPriorityBelowNormal, 0, 128);
   myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
+
+  /* definition and creation of myTask03 */
+  osThreadDef(myTask03, StartTask03, osPriorityLow, 0, 128);
+  myTask03Handle = osThreadCreate(osThread(myTask03), NULL);
+
+  /* definition and creation of myTask04 */
+  osThreadDef(myTask04, StartTask04, osPriorityIdle, 0, 128);
+  myTask04Handle = osThreadCreate(osThread(myTask04), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
+
   ProgramStart("RTOS test....");
+  //HAL_TIM_Base_Start(&htim2);
+  osSemaphoreRelease(myBinarySem01Handle);
+  HAL_TIM_Base_Start(&htim2);
+
+
   /* USER CODE END RTOS_THREADS */
 
   /* Start scheduler */
@@ -244,6 +275,51 @@ void SystemClock_Config(void)
 }
 
 /**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 84-1;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 4294967295;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
+
+}
+
+/**
   * @brief USART2 Initialization Function
   * @param None
   * @retval None
@@ -294,7 +370,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LD2_Pin|Trig_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, D6_Pin|D3_Pin|D5_Pin|D4_Pin, GPIO_PIN_RESET);
@@ -305,12 +381,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : LD2_Pin */
-  GPIO_InitStruct.Pin = LD2_Pin;
+  /*Configure GPIO pins : LD2_Pin Trig_Pin */
+  GPIO_InitStruct.Pin = LD2_Pin|Trig_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : D6_Pin D3_Pin D5_Pin D4_Pin */
   GPIO_InitStruct.Pin = D6_Pin|D3_Pin|D5_Pin|D4_Pin;
@@ -318,6 +394,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Echo_Pin */
+  GPIO_InitStruct.Pin = Echo_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(Echo_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
@@ -328,6 +410,8 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+//double dist = Distance();
+double distan;
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_myStartTask01 */
@@ -345,11 +429,32 @@ void myStartTask01(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  LD2Test();
-	  Cursor(0,0);
-	  printf("LD2 flashed %d times(Task_1)   ",n1++);
+	  if(osSemaphoreWait(myBinarySem01Handle, 0) == osOK)
+	  {
+		  printf("Task 01 Ultrasonic (Normal)----------------------- \r\n");
+
+
+
+		  double dist = Distance();
+		  distan = dist;
+		 // printf("Distance : %f\r\n" , dist);
+		  osSemaphoreRelease(myBinarySem01Handle);
+
+		/*  while (1)
+		  {
+			  double dist = Distance();
+
+			  printf("Distance : %f\r\n", dist);
+		  }
+		  */
+	  }
+		osDelay(10);
+
+	//  LD2Test();
+	 // Cursor(0,0);
+	 // printf("LD2 flashed %d times(Task_1)   ",n1++);
 	  //HAL_Delay(500);
-	  osDelay(500);
+	//  osDelay(500);
   }
   /* USER CODE END 5 */
 }
@@ -368,9 +473,9 @@ void myStartTask02(void const * argument)
 	int n=0;
 	for(;;)
 	{
-		int d; //degree angle
+	/*	int d; //degree angle
 	  	Cursor(0,10);
-	  	if(mode)
+	 	if(mode)
 	  	{
 	  		printf("B1 button pressed...%d times\r\n", bn);
 	  		step_wave((t1 % 4) + 1);
@@ -379,14 +484,76 @@ void myStartTask02(void const * argument)
 	  	else
 	  		printf("                                   ");
 
-	 // printf("Input Degree : ");
-	 // scanf("%d", &d);
-	 // int step = 4096 * d / 360;
-	 // printf("Wave(Full) : %d steps, Half : %d steps", step/2, step);
+	  printf("Input Degree : ");
+	  scanf("%d", &d);
+	  int step = 4096 * d / 360;
+	  printf("Wave(Full) : %d steps, Half : %d steps", step/2, step); */
+		  if(osSemaphoreWait(myBinarySem01Handle, 0) == osOK)
+		  {
+		printf("Task 02 stepmotor (BelowNormal)----------------------- \r\n");
+		step_wave(distan);
+		  osSemaphoreRelease(myBinarySem01Handle);
 
-		osDelay(5); //TASK delay
+		  }
+		osDelay(10); //TASK delay
+
   }
   /* USER CODE END myStartTask02 */
+}
+
+/* USER CODE BEGIN Header_StartTask03 */
+/**
+* @brief Function implementing the myTask03 thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTask03 */
+void StartTask03(void const * argument)
+{
+  /* USER CODE BEGIN StartTask03 */
+  /* Infinite loop */
+  for(;;)
+  {
+	  if(osSemaphoreWait(myBinarySem01Handle, 0) == osOK)
+	  {
+		printf("Task 03 LED (Low)----------------------- \r\n");
+
+			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 1);
+			osDelay(3000);
+		    HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 0);
+
+
+		  osSemaphoreRelease(myBinarySem01Handle);
+
+	  }
+    osDelay(10);
+  }
+  /* USER CODE END StartTask03 */
+}
+
+/* USER CODE BEGIN Header_StartTask04 */
+/**
+* @brief Function implementing the myTask04 thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTask04 */
+void StartTask04(void const * argument)
+{
+  /* USER CODE BEGIN StartTask04 */
+  /* Infinite loop */
+  for(;;)
+  {
+	  if(osSemaphoreWait(myBinarySem01Handle, 0) == osOK)
+	  {
+		printf("Task 04 Text (Idle)----------------------- \r\n");
+		printf("sequence end, distance = %d \r\n",distan);
+		// osSemaphoreRelease(myBinarySem01Handle);
+
+	  }
+    osDelay(10);
+  }
+  /* USER CODE END StartTask04 */
 }
 
 /**

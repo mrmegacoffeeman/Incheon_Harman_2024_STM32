@@ -1,0 +1,44 @@
+16:33:23 **** Incremental Build of configuration Debug for project Test011-RTOS-Mission ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:189:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+  189 |   ProgramStart("RTOS - Mission");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:479:14: warning: data definition has no type or storage class
+  479 | int dr = 30; dr1 = 30, dr2 = 50, dr3 = 90;
+      |              ^~~
+../Core/Src/main.c:479:14: warning: type defaults to 'int' in declaration of 'dr1' [-Wimplicit-int]
+../Core/Src/main.c:479:24: warning: type defaults to 'int' in declaration of 'dr2' [-Wimplicit-int]
+  479 | int dr = 30; dr1 = 30, dr2 = 50, dr3 = 90;
+      |                        ^~~
+../Core/Src/main.c:479:34: warning: type defaults to 'int' in declaration of 'dr3' [-Wimplicit-int]
+  479 | int dr = 30; dr1 = 30, dr2 = 50, dr3 = 90;
+      |                                  ^~~
+../Core/Src/main.c: In function 'StartTask04':
+../Core/Src/main.c:570:19: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  570 |                   printf("Current distance : %dm %dcm (%dmm) (%d-%d)\r\n", dm, dc, dist,t1,t0);
+      |                   ^~~~~~
+../Core/Src/main.c:22:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   21 | #include "cmsis_os.h"
+  +++ |+#include <stdio.h>
+   22 | 
+../Core/Src/main.c:570:19: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  570 |                   printf("Current distance : %dm %dcm (%dmm) (%d-%d)\r\n", dm, dc, dist,t1,t0);
+      |                   ^~~~~~
+../Core/Src/main.c:570:19: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "Test011-RTOS-Mission.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test011-RTOS-Mission\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test011-RTOS-Mission.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test011-RTOS-Mission.elf
+ 
+arm-none-eabi-size  Test011-RTOS-Mission.elf 
+arm-none-eabi-objdump -h -S Test011-RTOS-Mission.elf  > "Test011-RTOS-Mission.list"
+   text	   data	    bss	    dec	    hex	filename
+  48808	    496	  18600	  67904	  10940	Test011-RTOS-Mission.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test011-RTOS-Mission.list
+ 
+
+16:33:24 Build Finished. 0 errors, 7 warnings. (took 738ms)
+
