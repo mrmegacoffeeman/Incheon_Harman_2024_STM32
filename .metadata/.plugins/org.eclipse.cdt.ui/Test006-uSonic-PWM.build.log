@@ -1,10 +1,11 @@
-17:45:32 **** Incremental Build of configuration Debug for project Test006-uSonic-PWM ****
+13:56:25 **** Incremental Build of configuration Debug for project Test006-uSonic-PWM ****
 make -j24 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:65:13: warning: data definition has no type or storage class
-   65 | int t1 = 0; t2 = 0;
-      |             ^~
-../Core/Src/main.c:65:13: warning: type defaults to 'int' in declaration of 't2' [-Wimplicit-int]
+arm-none-eabi-gcc "C:/Users/user/source/repos/STM32/myLib/uSonic.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/uSonic.d" -MT"Core/Src/uSonic.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/uSonic.o"
+C:/Users/user/source/repos/STM32/myLib/uSonic.c: In function 'Distance':
+C:/Users/user/source/repos/STM32/myLib/uSonic.c:27:15: warning: unused variable 't0' [-Wunused-variable]
+   27 |           int t0 = 0, t1, t2;
+      |               ^~
 ../Core/Src/main.c: In function 'main':
 ../Core/Src/main.c:120:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
   120 |   ProgramStart("uSonic - PWM : Start");
@@ -32,5 +33,5 @@ Finished building: default.size.stdout
 Finished building: Test006-uSonic-PWM.list
  
 
-17:45:32 Build Finished. 0 errors, 5 warnings. (took 584ms)
+13:56:25 Build Finished. 0 errors, 4 warnings. (took 584ms)
 

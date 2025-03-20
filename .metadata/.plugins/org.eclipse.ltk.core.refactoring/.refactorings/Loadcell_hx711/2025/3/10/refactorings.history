@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Loadcell_hx711/Core/Src/hxzz.c&apos; to &apos;hx711.c&apos;" description="Rename resource &apos;hxzz.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Src/hxzz.c" name="hx711.c" stamp="1741056705966" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;Loadcell_hx711/Core/Src/hx711&apos; to &apos;hx711.h&apos;" description="Rename resource &apos;hx711&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Src/hx711" name="hx711.h" stamp="1741056712213" updateReferences="true"/>
+</session>

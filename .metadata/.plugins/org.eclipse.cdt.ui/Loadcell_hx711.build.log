@@ -1,0 +1,29 @@
+13:58:28 **** Incremental Build of configuration Debug for project Loadcell_hx711 ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/hx711.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/hx711.d" -MT"Core/Src/hx711.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/hx711.o"
+../Core/Src/hx711.c: In function 'HX711_Read':
+../Core/Src/hx711.c:23:16: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+   23 |                printf("HX711 Timeout! Check wiring.\n");
+      |                ^~~~~~
+../Core/Src/hx711.c:2:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+    1 | #include "hx711.h"
+  +++ |+#include <stdio.h>
+    2 | 
+../Core/Src/hx711.c:23:16: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+   23 |                printf("HX711 Timeout! Check wiring.\n");
+      |                ^~~~~~
+../Core/Src/hx711.c:23:16: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "Loadcell_hx711.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Loadcell_hx711\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Loadcell_hx711.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Loadcell_hx711.elf
+ 
+arm-none-eabi-size  Loadcell_hx711.elf 
+arm-none-eabi-objdump -h -S Loadcell_hx711.elf  > "Loadcell_hx711.list"
+   text	   data	    bss	    dec	    hex	filename
+  33024	    480	   1984	  35488	   8aa0	Loadcell_hx711.elf
+Finished building: default.size.stdout
+ 
+Finished building: Loadcell_hx711.list
+ 
+
+13:58:28 Build Finished. 0 errors, 2 warnings. (took 604ms)
+

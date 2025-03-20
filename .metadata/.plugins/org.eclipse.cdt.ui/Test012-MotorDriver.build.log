@@ -1,21 +1,6 @@
-12:13:30 **** Incremental Build of configuration Debug for project Test012-MotorDriver ****
+15:07:49 **** Incremental Build of configuration Debug for project Test012-MotorDriver ****
 make -j24 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:97:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
-   97 |   ProgramStart("DC Motor & Motor Driver Test");
-      |   ^~~~~~~~~~~~
-../Core/Src/main.c:113:19: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
-  113 |                   printf("Motor direction changed...(%d)\r\n", op);
-      |                   ^~~~~~
-../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-   20 | #include "main.h"
-  +++ |+#include <stdio.h>
-   21 | 
-../Core/Src/main.c:113:19: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
-  113 |                   printf("Motor direction changed...(%d)\r\n", op);
-      |                   ^~~~~~
-../Core/Src/main.c:113:19: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o"
 arm-none-eabi-gcc -o "Test012-MotorDriver.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test012-MotorDriver\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test012-MotorDriver.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Test012-MotorDriver.elf
  
@@ -28,5 +13,5 @@ Finished building: default.size.stdout
 Finished building: Test012-MotorDriver.list
  
 
-12:13:31 Build Finished. 0 errors, 3 warnings. (took 742ms)
+15:07:50 Build Finished. 0 errors, 0 warnings. (took 795ms)
 

@@ -4704,7 +4704,7 @@ uint32_t HAL_RCC_GetPCLK1Freq(void)
  8001d40:	b580      	push	{r7, lr}
  8001d42:	af00      	add	r7, sp, #0
   /* Get HCLK source and Compute PCLK1 frequency ---------------------------*/
-  return (HAL_RCC_GetHCLKFreq() >> APBPrescTable[(RCC->CFGR & RCC_CFGR_PPRE1) >> RCC_CFGR_PPRE1_Pos]);
+     return (HAL_RCC_GetHCLKFreq() >> APBPrescTable[(RCC->CFGR & RCC_CFGR_PPRE1) >> RCC_CFGR_PPRE1_Pos]);
  8001d44:	f7ff fff0 	bl	8001d28 <HAL_RCC_GetHCLKFreq>
  8001d48:	4602      	mov	r2, r0
  8001d4a:	4b05      	ldr	r3, [pc, #20]	; (8001d60 <HAL_RCC_GetPCLK1Freq+0x20>)

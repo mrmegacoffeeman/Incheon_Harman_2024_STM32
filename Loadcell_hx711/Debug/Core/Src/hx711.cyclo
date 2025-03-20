@@ -1,0 +1,6 @@
+../Core/Src/hx711.c:8:6:delayMicroseconds	2
+../Core/Src/hx711.c:15:6:HX711_Read	5
+../Core/Src/hx711.c:47:6:HX711_Tare	2
+../Core/Src/hx711.c:57:7:HX711_GetWeight	2
+../Core/Src/hx711.c:67:6:HX711_SetScale	1
+../Core/Src/hx711.c:72:6:HX711_SetOffset	1

@@ -62,7 +62,7 @@ static void MX_TIM3_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-int t1 = 0; t2 = 0;
+int t1 = 0, t2 = 0;
 double dist = 0.0;
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {

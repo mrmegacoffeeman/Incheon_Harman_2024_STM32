@@ -16,7 +16,7 @@ int i2c_init(I2C_HandleTypeDef *p)
 int i2c_scan()
 {
 	if(hi2c == NULL) return;
-	for(int addr=0;addr<128;addr++)
+	for(int addr=1;addr<257;addr++)
 	{
 		if(HAL_I2C_IsDeviceReady(hi2c, addr, 1, 10) == HAL_OK)
 		{

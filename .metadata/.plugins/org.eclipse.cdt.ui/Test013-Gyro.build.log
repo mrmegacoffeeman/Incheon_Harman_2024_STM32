@@ -1,0 +1,50 @@
+16:52:02 **** Incremental Build of configuration Debug for project Test013-Gyro ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:100:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+  100 |   ProgramStart ("Gyroscope GY-6500 Test");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:101:3: warning: implicit declaration of function 'i2c_init' [-Wimplicit-function-declaration]
+  101 |   i2c_init(&hi2c1);
+      |   ^~~~~~~~
+../Core/Src/main.c:102:3: warning: implicit declaration of function 'i2c_scan' [-Wimplicit-function-declaration]
+  102 |   i2c_scan();   //GY-6500 : 0xD0
+      |   ^~~~~~~~
+../Core/Src/main.c:104:3: warning: implicit declaration of function 'lcd_init' [-Wimplicit-function-declaration]
+  104 |   lcd_init(); HAL_Delay(100);
+      |   ^~~~~~~~
+../Core/Src/main.c:108:3: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  108 |   printf("GY-6500 (WHO_AM_I) info : %02x\r\n" ,whoami);
+      |   ^~~~~~
+../Core/Src/main.c:25:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   24 | #include "C:\Users\user\STM32Cube\Repository\STM32Cube_FW_F4_V1.28.1\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h"
+  +++ |+#include <stdio.h>
+   25 | 
+../Core/Src/main.c:108:3: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  108 |   printf("GY-6500 (WHO_AM_I) info : %02x\r\n" ,whoami);
+      |   ^~~~~~
+../Core/Src/main.c:108:3: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:166:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  166 |           sprintf( buffer1, "%.1f,%.1f,%.1f", ax, ay, az);  //buffer : word save space
+      |           ^~~~~~~
+../Core/Src/main.c:166:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:166:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:166:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:167:11: warning: implicit declaration of function 'lcd_printEx' [-Wimplicit-function-declaration]
+  167 |           lcd_printEx(buffer1, 0);
+      |           ^~~~~~~~~~~
+arm-none-eabi-gcc -o "Test013-Gyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test013-Gyro\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test013-Gyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test013-Gyro.elf
+ 
+arm-none-eabi-size  Test013-Gyro.elf 
+arm-none-eabi-objdump -h -S Test013-Gyro.elf  > "Test013-Gyro.list"
+   text	   data	    bss	    dec	    hex	filename
+  39632	    476	   2068	  42176	   a4c0	Test013-Gyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test013-Gyro.list
+ 
+
+16:52:03 Build Finished. 0 errors, 9 warnings. (took 591ms)
+

@@ -292,7 +292,7 @@ HAL_StatusTypeDef HAL_TIM_Base_Init(TIM_HandleTypeDef *htim)
       htim->Base_MspInitCallback = HAL_TIM_Base_MspInit;
     }
     /* Init the low level hardware : GPIO, CLOCK, NVIC */
-    htim->Base_MspInitCallback(htim);
+    htim->Base_MspInitCallback(htim);gihj
 #else
     /* Init the low level hardware : GPIO, CLOCK, NVIC */
     HAL_TIM_Base_MspInit(htim);
